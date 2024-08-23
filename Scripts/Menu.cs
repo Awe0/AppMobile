@@ -15,6 +15,7 @@ public partial class Menu : Node
 		quitButton = GetNode<Button>("VBoxContainer/Quit/MarginContainer/Button");
 
 		MouseEnteredAndExited();
+		QuitGame();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,8 +34,8 @@ public partial class Menu : Node
 		quitButton.MouseExited += () => quitButton.Text = "";
 	}
 
-	private void QuitGame()
+	public void QuitGame()
 	{
-		quitButton.Pressed += () => GD.Print("ShutDown");
+		quitButton.Pressed += () => GetTree().Quit();
 	}
 }
