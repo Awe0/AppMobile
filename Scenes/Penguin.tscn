@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl8iybb83ktns"]
+
+[ext_resource type="Texture2D" uid="uid://b3a1kguxm14t7" path="res://Assets/penguin.png" id="1_5wthc"]
+
+[node name="Bear" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_5wthc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-32, 64, 32, 64, 32, -64, -32, -64)

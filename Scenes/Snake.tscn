@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkjrpyi5c1hfr"]
+
+[ext_resource type="Texture2D" uid="uid://bhpnwr7gatfyf" path="res://Assets/snake.png" id="1_rdpny"]
+
+[node name="Bear" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_rdpny")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(64, 32, 64, -96, 0, -96, 0, -33, 0, -32, -64, -32, -64, 96, 0, 96, 0, 32)
