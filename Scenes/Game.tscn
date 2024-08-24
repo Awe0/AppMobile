@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgo67fewfsfug"]
+[gd_scene load_steps=9 format=3 uid="uid://dgo67fewfsfug"]
 
 [ext_resource type="Texture2D" uid="uid://hhke1to7tura" path="res://Assets/cell64x64.png" id="1_rbb1n"]
+[ext_resource type="Theme" uid="uid://beijn2dtle4bx" path="res://Themes/Buttons.tres" id="1_tiyt3"]
 [ext_resource type="PackedScene" uid="uid://db0kkrar8in0u" path="res://Scenes/Bear.tscn" id="2_ku8so"]
 [ext_resource type="PackedScene" uid="uid://dfuv1mrrh52wo" path="res://Scenes/Giraffe.tscn" id="3_ug0vr"]
 [ext_resource type="PackedScene" uid="uid://bl8iybb83ktns" path="res://Scenes/Penguin.tscn" id="4_bxkdp"]
 [ext_resource type="PackedScene" uid="uid://bkjrpyi5c1hfr" path="res://Scenes/Snake.tscn" id="5_q0vkm"]
+
+[sub_resource type="Theme" id="Theme_cqxvs"]
+
+[sub_resource type="Theme" id="Theme_8rwev"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -13,26 +18,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_tiyt3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.629407, 0.693909, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.1
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -178.0
-offset_top = -178.0
-offset_right = 178.0
-offset_bottom = 178.0
+anchor_right = 1.0
+anchor_bottom = 0.084
+offset_bottom = 640.0
 grow_horizontal = 2
-grow_vertical = 2
 size_flags_horizontal = 4
+theme = SubResource("Theme_cqxvs")
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = SubResource("Theme_8rwev")
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 10
@@ -451,3 +462,41 @@ position = Vector2(642, 1040)
 
 [node name="Snake" parent="." instance=ExtResource("5_q0vkm")]
 position = Vector2(344, 830)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.885
+anchor_top = 0.92
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -102.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 100
+
+[node name="Options" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Options"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="HBoxContainer/Options/MarginContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="Quit" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Quit"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="HBoxContainer/Quit/MarginContainer"]
+layout_mode = 2
+text = "Quit
+"
