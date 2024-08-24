@@ -14,8 +14,8 @@ public partial class Menu : Node
 		optionsButton = GetNode<Button>("VBoxContainer/Options/MarginContainer/Button");
 		quitButton = GetNode<Button>("VBoxContainer/Quit/MarginContainer/Button");
 
-		MouseEnteredAndExited();
 		QuitGame();
+		PressPlay();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,19 +23,13 @@ public partial class Menu : Node
 	{
 	}
 
-	private void MouseEnteredAndExited()
-	{
-		playButton.MouseEntered += () => playButton.Text = "Play";
-		optionsButton.MouseEntered += () => optionsButton.Text = "Options";
-		quitButton.MouseEntered += () => quitButton.Text = "Quit";
-
-		playButton.MouseExited += () => playButton.Text = "";
-		optionsButton.MouseExited += () => optionsButton.Text = "";
-		quitButton.MouseExited += () => quitButton.Text = "";
-	}
-
 	public void QuitGame()
 	{
 		quitButton.Pressed += () => GetTree().Quit();
+	}
+
+	public void PressPlay()
+	{
+		playButton.Pressed += () => GetTree().ChangeSceneToFile("res://Scenes/Game.tscn");
 	}
 }
