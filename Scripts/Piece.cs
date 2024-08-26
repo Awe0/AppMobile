@@ -17,6 +17,10 @@ public partial class Piece : Control
 	}
 	public override Variant _GetDragData(Vector2 atPosition)
 	{
+		TextureRect preview = new TextureRect();
+        preview.Texture = texture.Texture;
+        preview.CustomMinimumSize = new Vector2(50, 50);
+		SetDragPreview(preview);
 		return texture;
 	}
 }
