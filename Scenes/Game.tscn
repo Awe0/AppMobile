@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgo67fewfsfug"]
+[gd_scene load_steps=10 format=3 uid="uid://dgo67fewfsfug"]
 
 [ext_resource type="Texture2D" uid="uid://hhke1to7tura" path="res://Assets/cell64x64.png" id="1_rbb1n"]
 [ext_resource type="Theme" uid="uid://beijn2dtle4bx" path="res://Themes/Buttons.tres" id="1_tiyt3"]
 [ext_resource type="PackedScene" uid="uid://db0kkrar8in0u" path="res://Scenes/Bear.tscn" id="2_ku8so"]
+[ext_resource type="Script" path="res://Scripts/Game.cs" id="2_ybli7"]
 [ext_resource type="PackedScene" uid="uid://dfuv1mrrh52wo" path="res://Scenes/Giraffe.tscn" id="3_ug0vr"]
 [ext_resource type="PackedScene" uid="uid://bl8iybb83ktns" path="res://Scenes/Penguin.tscn" id="4_bxkdp"]
 [ext_resource type="PackedScene" uid="uid://bkjrpyi5c1hfr" path="res://Scenes/Snake.tscn" id="5_q0vkm"]
@@ -19,6 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_tiyt3")
+script = ExtResource("2_ybli7")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -449,19 +451,34 @@ layout_mode = 2
 texture = ExtResource("1_rbb1n")
 
 [node name="Bear" parent="." instance=ExtResource("2_ku8so")]
-position = Vector2(572, 818)
+offset_left = 434.0
+offset_top = 748.0
+offset_right = 434.0
+offset_bottom = 748.0
 
 [node name="Giraffe" parent="." instance=ExtResource("3_ug0vr")]
-position = Vector2(159, 876)
+offset_left = 97.0
+offset_top = 796.0
+offset_right = 97.0
+offset_bottom = 796.0
 
 [node name="Penguin2" parent="." instance=ExtResource("4_bxkdp")]
-position = Vector2(550, 1038)
+offset_left = 550.0
+offset_top = 1038.0
+offset_right = 550.0
+offset_bottom = 1038.0
 
 [node name="Penguin" parent="." instance=ExtResource("4_bxkdp")]
-position = Vector2(642, 1040)
+offset_left = 642.0
+offset_top = 1040.0
+offset_right = 642.0
+offset_bottom = 1040.0
 
 [node name="Snake" parent="." instance=ExtResource("5_q0vkm")]
-position = Vector2(344, 830)
+offset_left = 342.0
+offset_top = 1006.0
+offset_right = 342.0
+offset_bottom = 1006.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -488,15 +505,14 @@ offset_bottom = 40.0
 layout_mode = 2
 text = "Options"
 
-[node name="Quit" type="Label" parent="HBoxContainer"]
+[node name="Back" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Quit"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Back"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Button" type="Button" parent="HBoxContainer/Quit/MarginContainer"]
+[node name="Button" type="Button" parent="HBoxContainer/Back/MarginContainer"]
 layout_mode = 2
-text = "Quit
-"
+text = "Back"

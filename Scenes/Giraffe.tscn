@@ -1,15 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfuv1mrrh52wo"]
+[gd_scene load_steps=2 format=3 uid="uid://dfuv1mrrh52wo"]
 
-[ext_resource type="Script" path="res://Scripts/Giraffe.cs" id="1_owxoa"]
-[ext_resource type="Texture2D" uid="uid://c0g3by34ctj2i" path="res://Assets/giraffe.png" id="2_h6ctv"]
+[ext_resource type="Script" path="res://Scripts/Piece.cs" id="1_3y4uf"]
 
-[node name="Giraffe" type="Node2D"]
-script = ExtResource("1_owxoa")
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_3y4uf")
+_textureName = "giraffe"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 256.0
+offset_bottom = 320.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-texture = ExtResource("2_h6ctv")
+[node name="Area2D" type="Area2D" parent="TextureRect"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TextureRect/Area2D"]
+position = Vector2(128, 160)
 polygon = PackedVector2Array(64, 160, 64, -96, 128, -96, 128, -160, 0, -160, 0, 32, -128, 32, -128, 160, -64, 160, -64, 96, 0, 96, 0, 160)
