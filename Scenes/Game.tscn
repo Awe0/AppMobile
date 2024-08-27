@@ -28,7 +28,12 @@ grow_vertical = 2
 color = Color(0, 0.629407, 0.693909, 1)
 
 [node name="Grid" parent="." instance=ExtResource("7_uw3u6")]
-layout_mode = 1
+layout_mode = 2
+anchors_preset = 0
+offset_left = 34.2
+offset_top = 57.6
+offset_right = 683.2
+offset_bottom = 712.6
 
 [node name="Bear" parent="." instance=ExtResource("2_ku8so")]
 offset_left = 434.0
