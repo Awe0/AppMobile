@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Grid : ColorRect
+public partial class Cell : Panel
 {
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -15,18 +15,8 @@ public partial class Grid : ColorRect
 	}
     public override bool _CanDropData(Vector2 atPosition, Variant data)
     {
-	GD.Print("Hello");
-    var dropableCells = GetTree().GetNodesInGroup("Dropable");
-
-		foreach (Node node in dropableCells)
-		{
-			if (node.IsInGroup("Dropable"))
-			{
-
-				return true;
-			}
-		}
-        return false;
+		GD.Print("Hello");
+        return true;
 	}
     public override void _DropData(Vector2 atPosition, Variant data)
 	{
