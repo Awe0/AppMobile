@@ -9,6 +9,7 @@ script = ExtResource("1_3y4uf")
 _textureName = "giraffe"
 
 [node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 256.0
 offset_bottom = 320.0
 
