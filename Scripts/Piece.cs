@@ -26,6 +26,7 @@ public partial class Piece : Control
 		SetDragPreview(preview);
 		return texture;
 	}
+	// MARCHE PAS !!!!
 	public void ScaleWhenMouseEntered()
 	{
 		GD.Print("HELLOOOOO");
