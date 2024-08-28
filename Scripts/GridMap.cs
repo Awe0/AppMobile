@@ -28,7 +28,6 @@ public partial class GridMap : Control
 			TextureRect newTextureRect = (TextureRect)textureRect.Duplicate();
 			newTextureRect.Position = gridPosition;
 
-			// Ajouter le nouveau TextureRect comme enfant du TileMap (ou autre parent)
 			gridMap.AddChild(newTextureRect);
 		}
 		else
