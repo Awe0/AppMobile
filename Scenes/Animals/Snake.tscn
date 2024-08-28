@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkjrpyi5c1hfr"]
+[gd_scene load_steps=2 format=3 uid="uid://bkjrpyi5c1hfr"]
 
 [ext_resource type="Script" path="res://Scripts/Piece.cs" id="1_kkdd2"]
-[ext_resource type="Texture2D" uid="uid://bhpnwr7gatfyf" path="res://Assets/snake.png" id="2_xcjj5"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -14,7 +13,6 @@ _textureName = "snake"
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 192.0
-texture = ExtResource("2_xcjj5")
 
 [node name="Area2D" type="Area2D" parent="TextureRect"]
 
