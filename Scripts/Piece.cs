@@ -5,6 +5,8 @@ using System.Runtime.CompilerServices;
 
 public partial class Piece : Control
 {
+	[Signal]
+	public delegate void DataIsDragEventHandler();
 	[Export] private string _textureName;
 	TextureRect texture;
 	Area2D area2D;
@@ -24,6 +26,7 @@ public partial class Piece : Control
         preview.Texture = texture.Texture;
         preview.CustomMinimumSize = new Vector2(50, 50);
 		SetDragPreview(preview);
+		EmitSignal(SignalName.DataIsDrag);
 		return texture;
 	}
 	// MARCHE PAS !!!!

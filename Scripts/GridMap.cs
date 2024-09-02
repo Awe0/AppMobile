@@ -13,10 +13,8 @@ public partial class GridMap : Control
 
     public override bool _CanDropData(Vector2 atPosition, Variant data)
     {
-        // Calculer la position sur la grille
         Vector2 gridPosition = (atPosition / CELL_SIZE).Floor() * CELL_SIZE;
 
-        // Vérifier si une pièce existe déjà à cette position
         foreach (Node child in gridMap.GetChildren())
         {
             if (child is TextureRect textureRect)

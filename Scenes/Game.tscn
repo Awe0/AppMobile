@@ -40,31 +40,31 @@ offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Bear" parent="." instance=ExtResource("2_ku8so")]
+[node name="Bear" parent="." groups=["Animals"] instance=ExtResource("2_ku8so")]
 offset_left = 434.0
 offset_top = 748.0
 offset_right = 434.0
 offset_bottom = 748.0
 
-[node name="Giraffe" parent="." instance=ExtResource("3_ug0vr")]
+[node name="Giraffe" parent="." groups=["Animals"] instance=ExtResource("3_ug0vr")]
 offset_left = 97.0
 offset_top = 796.0
 offset_right = 97.0
 offset_bottom = 796.0
 
-[node name="Penguin2" parent="." instance=ExtResource("4_bxkdp")]
+[node name="Penguin2" parent="." groups=["Animals"] instance=ExtResource("4_bxkdp")]
 offset_left = 550.0
 offset_top = 1038.0
 offset_right = 550.0
 offset_bottom = 1038.0
 
-[node name="Penguin" parent="." instance=ExtResource("4_bxkdp")]
+[node name="Penguin" parent="." groups=["Animals"] instance=ExtResource("4_bxkdp")]
 offset_left = 642.0
 offset_top = 1040.0
 offset_right = 642.0
 offset_bottom = 1040.0
 
-[node name="Snake" parent="." instance=ExtResource("5_q0vkm")]
+[node name="Snake" parent="." groups=["Animals"] instance=ExtResource("5_q0vkm")]
 offset_left = 342.0
 offset_top = 1006.0
 offset_right = 342.0
