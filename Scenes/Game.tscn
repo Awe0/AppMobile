@@ -31,7 +31,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.629407, 0.693909, 1)
 
-[node name="Control" parent="." instance=ExtResource("3_xn3ir")]
+[node name="GridMap" parent="." instance=ExtResource("3_xn3ir")]
 layout_mode = 1
 offset_left = 44.0
 offset_top = 40.0
