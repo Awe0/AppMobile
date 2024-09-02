@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 public partial class Game : Control
 {
+	List<Node> pieces = new List<Node>();
 	Button optionsButton;
 	Button backButton;
 	Control gameScene;
-	List<Control> pieces;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -15,7 +15,7 @@ public partial class Game : Control
 		gameScene = GetNode<Control>(".");
 		backButton = GetNode<Button>("HBoxContainer/Back/MarginContainer/Button");
 		optionsButton = GetNode<Button>("HBoxContainer/Options/MarginContainer/Button");
-		DataIsDragSignal();
+		GetAnimalsInGame();
 		PressBack();
 	}
 
@@ -24,20 +24,36 @@ public partial class Game : Control
 	{
 	}
 
-		public void PressBack()
+	private void PressBack()
 	{
 		backButton.Pressed += () => GetTree().ChangeSceneToFile("res://Scenes/Menu.tscn");
 	}
 
-	public void DataIsDragSignal()
+	private void GetAnimalsInGame()
 	{
 		foreach (Control node in gameScene.GetChildren())
 		{
 			if (node.IsInGroup("Animals"))
 			{
 				pieces.Add(node);
-				GD.Print(pieces);
+				Piece piece = node as Piece;
+				if (piece != null)
+				{
+					piece.Connect(nameof(Piece.DataIsDrag), new Callable(this, nameof(OnDataIsDrag)));
+				}
 			}
 		}
+	}
+	private void OnDataIsDrag(string animalsName)
+	{
+		GD.Print(animalsName);
+		foreach (Control node in pieces)
+		{
+			GD.Print(node.Name);
+			if (node.Name == animalsName)
+			{
+				node.Visible = false;
+			}
+		}	
 	}
 }
