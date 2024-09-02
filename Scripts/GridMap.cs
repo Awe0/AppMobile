@@ -14,7 +14,6 @@ public partial class GridMap : Control
     public override bool _CanDropData(Vector2 atPosition, Variant data)
     {
         Vector2 gridPosition = (atPosition / CELL_SIZE).Floor() * CELL_SIZE;
-
         foreach (Node child in gridMap.GetChildren())
         {
             if (child is TextureRect textureRect)
@@ -33,11 +32,9 @@ public partial class GridMap : Control
         if (data.Obj is TextureRect textureRect)
         {
             Vector2 gridPosition = (atPosition / CELL_SIZE).Floor() * CELL_SIZE;
-
-                TextureRect newTextureRect = (TextureRect)textureRect.Duplicate();
-                newTextureRect.Position = gridPosition;
-                
-                gridMap.AddChild(newTextureRect);
+            TextureRect newTextureRect = (TextureRect)textureRect.Duplicate();
+            newTextureRect.Position = gridPosition;
+            gridMap.AddChild(newTextureRect);
         }
         else
         {

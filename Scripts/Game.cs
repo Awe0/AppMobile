@@ -46,10 +46,8 @@ public partial class Game : Control
 	}
 	private void OnDataIsDrag(string animalsName)
 	{
-		GD.Print(animalsName);
 		foreach (Control node in pieces)
-		{
-			GD.Print(node.Name);
+		{		
 			if (node.Name == animalsName)
 			{
 				node.Visible = false;
