@@ -4,9 +4,12 @@ using System.Collections.Generic;
 
 public partial class PrebuildGrid : Control
 {
+	[Signal]
+	public delegate void GridIsCompletedEventHandler();
 	List<Node> pieces = new List<Node>();
 	Button optionsButton;
 	Button backButton;
+	Button startButton;
 	Control gameScene;
 
 	// Called when the node enters the scene tree for the first time.
@@ -15,6 +18,7 @@ public partial class PrebuildGrid : Control
 		gameScene = GetNode<Control>(".");
 		backButton = GetNode<Button>("HBoxContainer/Back/MarginContainer/Button");
 		optionsButton = GetNode<Button>("HBoxContainer/Options/MarginContainer/Button");
+		startButton = GetNode<Button>("HBoxContainer/Start/MarginContainer/Button");
 		GetAnimalsInGame();
 		PressBack();
 	}
@@ -27,6 +31,10 @@ public partial class PrebuildGrid : Control
 	private void PressBack()
 	{
 		backButton.Pressed += () => GetTree().ChangeSceneToFile("res://Scenes/Menu.tscn");
+	}
+	private void PressStart()
+	{
+		startButton.Pressed += () => GetTree().ChangeSceneToFile("res://Scenes/Menu.tscn");
 	}
 
 	private void GetAnimalsInGame()
