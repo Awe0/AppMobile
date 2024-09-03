@@ -18,20 +18,14 @@ public partial class Piece : Control
 		Texture2D loadedTexture = GD.Load<Texture2D>($"res://Assets/{_textureName}.png");
 		texture.Texture = loadedTexture;
 		area2D = GetNode<Area2D>("TextureRect/Area2D");
-		area2D.MouseEntered += () => ScaleWhenMouseEntered();
 	}
 	public override Variant _GetDragData(Vector2 atPosition)
 	{
 		TextureRect preview = new TextureRect();
         preview.Texture = texture.Texture;
-        preview.CustomMinimumSize = new Vector2(50, 50);
+        preview.CustomMinimumSize = new Vector2(1,1);
 		SetDragPreview(preview);
 		EmitSignal(SignalName.DataIsDrag, _textureName);
 		return texture;
-	}
-	// MARCHE PAS !!!!
-	public void ScaleWhenMouseEntered()
-	{
-		GD.Print("HELLOOOOO");
 	}
 }
