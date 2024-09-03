@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class Game : Control
+public partial class PrebuildGrid : Control
 {
 	List<Node> pieces = new List<Node>();
 	Button optionsButton;

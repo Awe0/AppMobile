@@ -2,13 +2,13 @@
 
 [ext_resource type="Theme" uid="uid://beijn2dtle4bx" path="res://Themes/Buttons.tres" id="1_tiyt3"]
 [ext_resource type="PackedScene" uid="uid://db0kkrar8in0u" path="res://Scenes/Animals/Bear.tscn" id="2_ku8so"]
-[ext_resource type="Script" path="res://Scripts/Game.cs" id="2_ybli7"]
+[ext_resource type="Script" path="res://Scripts/PrebuildGrid.cs" id="2_ybli7"]
 [ext_resource type="PackedScene" uid="uid://dfuv1mrrh52wo" path="res://Scenes/Animals/Giraffe.tscn" id="3_ug0vr"]
 [ext_resource type="PackedScene" uid="uid://b5hhejkv4j12b" path="res://Scenes/GridMap.tscn" id="3_xn3ir"]
 [ext_resource type="PackedScene" uid="uid://bl8iybb83ktns" path="res://Scenes/Animals/Penguin.tscn" id="4_bxkdp"]
 [ext_resource type="PackedScene" uid="uid://bkjrpyi5c1hfr" path="res://Scenes/Animals/Snake.tscn" id="5_q0vkm"]
 
-[node name="Game" type="Control"]
+[node name="PrebuildGrid" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,6 +53,8 @@ offset_right = 97.0
 offset_bottom = 796.0
 
 [node name="penguin2" parent="." groups=["Animals"] instance=ExtResource("4_bxkdp")]
+layout_mode = 1
+anchors_preset = -1
 offset_left = 550.0
 offset_top = 1038.0
 offset_right = 550.0
