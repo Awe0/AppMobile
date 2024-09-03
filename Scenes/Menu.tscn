@@ -77,10 +77,18 @@ offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/Options/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Options/MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Options/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Options"
+text = "Host"
+
+[node name="Button2" type="Button" parent="VBoxContainer/Options/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = " Join "
 
 [node name="Quit" type="Label" parent="VBoxContainer"]
 layout_mode = 2
