@@ -11,7 +11,7 @@ public partial class Menu : Control
 	public override void _Ready()
 	{
 		playButton = GetNode<Button>("VBoxContainer/Play/MarginContainer/Button");
-		optionsButton = GetNode<Button>("VBoxContainer/Options/MarginContainer/Button");
+		// optionsButton = GetNode<Button>("VBoxContainer/Options/MarginContainer/Button");
 		quitButton = GetNode<Button>("VBoxContainer/Quit/MarginContainer/Button");
 
 		QuitGame();
