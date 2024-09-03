@@ -80,11 +80,23 @@ anchor_left = 0.885
 anchor_top = 0.92
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -102.0
-offset_top = -23.0
+offset_left = -623.2
+offset_top = -22.6
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 100
+
+[node name="Back" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Back"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="HBoxContainer/Back/MarginContainer"]
+layout_mode = 2
+text = "Back"
 
 [node name="Options" type="Label" parent="HBoxContainer"]
 layout_mode = 2
@@ -98,14 +110,15 @@ offset_bottom = 40.0
 layout_mode = 2
 text = "Options"
 
-[node name="Back" type="Label" parent="HBoxContainer"]
+[node name="Start" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Back"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Start"]
 layout_mode = 0
-offset_right = 40.0
+offset_left = 426.33
+offset_right = 478.33
 offset_bottom = 40.0
 
-[node name="Button" type="Button" parent="HBoxContainer/Back/MarginContainer"]
+[node name="Button" type="Button" parent="HBoxContainer/Start/MarginContainer"]
 layout_mode = 2
-text = "Back"
+text = " Start "
