@@ -30,6 +30,6 @@ public partial class Menu : Control
 
 	public void PressPlay()
 	{
-		playButton.Pressed += () => GetTree().ChangeSceneToFile("res://Scenes/Game.tscn");
+		playButton.Pressed += () => GetTree().ChangeSceneToFile("res://Scenes/PrebuildGrid.tscn");
 	}
 }
