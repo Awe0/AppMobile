@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://w7j6d2dkb4nj"]
+
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_y1bmt"]
+[ext_resource type="Texture2D" uid="uid://lhbydo8ab6ib" path="res://Assets/yellow.png" id="2_0cn5u"]
+[ext_resource type="Texture2D" uid="uid://ckcvnq4f0ghwd" path="res://Assets/green.png" id="3_gl6ci"]
+[ext_resource type="Texture2D" uid="uid://di28kh786gp4t" path="res://Assets/brown.png" id="4_dyo82"]
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_y1bmt")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 36.0
+offset_top = 1188.0
+offset_right = 688.0
+offset_bottom = 1251.0
+
+[node name="Yellow" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "1x
+5 cells"
+icon = ExtResource("2_0cn5u")
+
+[node name="Green" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "1x
+3 cells"
+icon = ExtResource("3_gl6ci")
+
+[node name="Brown" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "1x
+4 cells"
+icon = ExtResource("4_dyo82")
+
+[connection signal="pressed" from="HBoxContainer/Yellow" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Green" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Brown" to="." method="_on_button_pressed"]
