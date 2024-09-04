@@ -7,18 +7,15 @@ public partial class PrebuildGrid : Control
 	[Signal]
 	public delegate void GridIsCompletedEventHandler();
 	List<Node> pieces = new List<Node>();
-	Button optionsButton;
 	Button backButton;
+	Button optionsButton;
 	Button startButton;
-	Control gameScene;
+	Control scene;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		gameScene = GetNode<Control>(".");
-		backButton = GetNode<Button>("HBoxContainer/Back/MarginContainer/Button");
-		optionsButton = GetNode<Button>("HBoxContainer/Options/MarginContainer/Button");
-		startButton = GetNode<Button>("HBoxContainer/Start/MarginContainer/Button");
+		GettingNodes();
 		GetAnimalsInGame();
 		PressBack();
 	}
@@ -27,6 +24,13 @@ public partial class PrebuildGrid : Control
 	public override void _Process(double delta)
 	{
 	}
+	private void GettingNodes()
+	{
+		scene = GetNode<Control>(".");
+		backButton = GetNode<Button>("HBoxContainer/Back/MarginContainer/Button");
+		optionsButton = GetNode<Button>("HBoxContainer/Options/MarginContainer/Button");
+		startButton = GetNode<Button>("HBoxContainer/Start/MarginContainer/Button");
+	} 
 
 	private void PressBack()
 	{
@@ -34,12 +38,17 @@ public partial class PrebuildGrid : Control
 	}
 	private void PressStart()
 	{
-		startButton.Pressed += () => GetTree().ChangeSceneToFile("res://Scenes/Menu.tscn");
+		bool canStart = false;
+		if (canStart == CheckIfPiecesArePlaced())
+		{
+			GD.Print("Hellooooo");
+			startButton.Pressed += () => GetTree().ChangeSceneToFile("res://Scenes/Menu.tscn");
+		}
 	}
 
 	private void GetAnimalsInGame()
 	{
-		foreach (Control node in gameScene.GetChildren())
+		foreach (Control node in scene.GetChildren())
 		{
 			if (node.IsInGroup("Animals"))
 			{
@@ -61,5 +70,19 @@ public partial class PrebuildGrid : Control
 				node.Visible = false;
 			}
 		}	
+	}
+	private bool CheckIfPiecesArePlaced()
+	{
+		bool allPiecesHidden = true;
+
+		foreach (Control node in pieces)
+		{
+			if (node.Visible == true)
+			{
+				allPiecesHidden = false;
+				break;
+			}
+		}
+		return allPiecesHidden;
 	}
 }
