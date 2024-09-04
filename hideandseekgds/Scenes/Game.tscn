@@ -1,41 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://w7j6d2dkb4nj"]
+[gd_scene load_steps=9 format=3 uid="uid://w7j6d2dkb4nj"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_y1bmt"]
 [ext_resource type="Texture2D" uid="uid://lhbydo8ab6ib" path="res://Assets/yellow.png" id="2_0cn5u"]
-[ext_resource type="Theme" uid="uid://byxv1brsahxxk" path="res://Themes/Warning_Label*.theme" id="2_bak1u"]
 [ext_resource type="Texture2D" uid="uid://ckcvnq4f0ghwd" path="res://Assets/green.png" id="3_gl6ci"]
 [ext_resource type="Texture2D" uid="uid://di28kh786gp4t" path="res://Assets/brown.png" id="4_dyo82"]
 [ext_resource type="Texture2D" uid="uid://b4kgbcwca8qlo" path="res://Assets/blue.png" id="5_wmgmb"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y28rf"]
-bg_color = Color(1, 1, 1, 0.643137)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(1, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n376p"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.8, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="Theme" id="Theme_52dsr"]
-Button/colors/font_color = Color(0, 0, 0, 1)
-Button/colors/font_hover_color = Color(0, 0, 0, 1)
-Button/styles/hover = SubResource("StyleBoxFlat_y28rf")
-Button/styles/normal = SubResource("StyleBoxFlat_n376p")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_srafb"]
 bg_color = Color(0.0431373, 0.00392157, 0, 0.67451)
@@ -95,51 +64,6 @@ offset_left = 720.0
 offset_top = 1280.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PopupContainer"]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="NoSelection" type="Label" parent="PopupContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_bak1u")
-text = "No color selected !"
-
-[node name="Button" type="Button" parent="PopupContainer/VBoxContainer"]
-layout_mode = 2
-theme = SubResource("Theme_52dsr")
-text = "OK"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="PopupContainer"]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="CantPlace" type="Label" parent="PopupContainer/VBoxContainer2"]
-layout_mode = 2
-theme = ExtResource("2_bak1u")
-text = "Can't place here !"
-
-[node name="Button" type="Button" parent="PopupContainer/VBoxContainer2"]
-layout_mode = 2
-theme = SubResource("Theme_52dsr")
-text = "OK"
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="PopupContainer"]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="CantRotate" type="Label" parent="PopupContainer/VBoxContainer3"]
-layout_mode = 2
-theme = ExtResource("2_bak1u")
-text = "Can't rotate, no color selected."
-
-[node name="Button" type="Button" parent="PopupContainer/VBoxContainer3"]
-layout_mode = 2
-theme = SubResource("Theme_52dsr")
-text = "OK"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
