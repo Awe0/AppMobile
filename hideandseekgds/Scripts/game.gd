@@ -3,13 +3,16 @@ extends Control
 const GRID_SIZE = 10
 const BLANK_CELL = preload("res://Assets/blank.png") 
 @onready var color_buttons_container = $HBoxContainer
+@onready var popup_container = $PopupContainer
 var color_buttons
+var popups
 var cells = []
 var selected_color = null 
 
 func _ready():
 	create_grid()
 	color_buttons = get_color_buttons()
+	popups = get_Hbox_popup()
 
 func _process(delta: float) -> void:
 	rotate_color()
@@ -32,7 +35,7 @@ func _button_pressed(i: int, j: int) -> void:
 	if selected_color:
 		place_color(i, j)
 	else:
-		print("Aucun bateau sélectionné pour être placé.")
+		popups[0].visible = true
 
 func place_color(i: int, j: int):
 	if can_place_color(i, j, selected_color.size, selected_color.is_vertical):
@@ -44,7 +47,7 @@ func place_color(i: int, j: int):
 			cells[x][y].icon = load("res://Assets/"+ selected_color.color_name +".png")
 		selected_color = null 
 	else:
-		print("La couleur ne peut pas être placé ici.")
+		popups[1].visible = true
 
 func can_place_color(i: int, j: int, size: int, is_vertical: bool) -> bool:
 	for n in range(size):
@@ -63,6 +66,10 @@ func _on_button_pressed() -> void:
 		selected_color = preload("res://Scenes/Green.tscn").instantiate()
 	elif color_buttons[2].is_pressed():
 		selected_color = preload("res://Scenes/Brown.tscn").instantiate()
+	elif color_buttons[3].is_pressed():
+		selected_color = preload("res://Scenes/Blue.tscn").instantiate()
+	elif color_buttons[4].is_pressed():
+		print(popups)
 
 func get_color_buttons():
 	var buttons = []
@@ -72,11 +79,19 @@ func get_color_buttons():
 			buttons.append(child)
 	return buttons
 
+func get_Hbox_popup():
+	var popup = []
+	for l in popup_container.get_child_count():
+		var child = popup_container.get_child(l)
+		print(child)
+		if child is VBoxContainer:
+			popup.append(child)
+	return popup
+
 func rotate_color():
 	if Input.is_action_just_released("rotate"):
 		if selected_color != null:
 			selected_color.is_vertical = false
 			print("ROTATING")
 		else:
-			print("Can't rotate, no piece selected") 
-		#is_vertical = false
+			popups[2].visible = true
