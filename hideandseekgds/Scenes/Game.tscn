@@ -1,36 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://w7j6d2dkb4nj"]
+[gd_scene load_steps=3 format=3 uid="uid://w7j6d2dkb4nj"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_y1bmt"]
-[ext_resource type="Texture2D" uid="uid://lhbydo8ab6ib" path="res://Assets/yellow.png" id="2_0cn5u"]
-[ext_resource type="Texture2D" uid="uid://ckcvnq4f0ghwd" path="res://Assets/green.png" id="3_gl6ci"]
-[ext_resource type="Texture2D" uid="uid://di28kh786gp4t" path="res://Assets/brown.png" id="4_dyo82"]
-[ext_resource type="Texture2D" uid="uid://b4kgbcwca8qlo" path="res://Assets/blue.png" id="5_wmgmb"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_srafb"]
-bg_color = Color(0.0431373, 0.00392157, 0, 0.67451)
-border_width_left = 5
-border_width_top = 5
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lh8pc"]
-bg_color = Color(0, 0, 0, 0.388235)
-border_width_left = 5
-border_width_top = 5
-border_color = Color(0, 0, 0, 0.643137)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="Theme" id="Theme_pvtvo"]
-Button/font_sizes/font_size = 30
-Button/icons/icon = null
-Button/styles/hover = SubResource("StyleBoxFlat_srafb")
-Button/styles/normal = SubResource("StyleBoxFlat_lh8pc")
+[ext_resource type="Theme" uid="uid://byxv1brsahxxk" path="res://Themes/Warning_Label*.theme" id="6_6oucx"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -52,56 +23,27 @@ color = Color(0.710435, 0.971203, 1, 1)
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
+offset_top = 149.0
+offset_bottom = 149.0
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 10
 
 [node name="PopupContainer" type="CenterContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-offset_left = 720.0
-offset_top = 1280.0
-grow_horizontal = 2
-grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-offset_top = 1185.0
-offset_right = 880.0
-offset_bottom = 1274.0
-theme = SubResource("Theme_pvtvo")
-
-[node name="Yellow" type="Button" parent="HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
-text = "1x
- 5 cells "
-icon = ExtResource("2_0cn5u")
+offset_left = 31.0
+offset_top = 865.0
+offset_right = 31.0
+offset_bottom = 865.0
 
-[node name="Green" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-text = "1x
- 3 cells "
-icon = ExtResource("3_gl6ci")
-
-[node name="Brown" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-text = "1x
- 4 cells "
-icon = ExtResource("4_dyo82")
-
-[node name="Blue" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-text = "2x
- 2 cells "
-icon = ExtResource("5_wmgmb")
-
-[node name="TEST" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-text = "TEEEEEEST"
-
-[connection signal="pressed" from="HBoxContainer/Yellow" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/Green" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/Brown" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/Blue" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/TEST" to="." method="_on_button_pressed"]
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 289.0
+offset_top = 26.0
+offset_right = 427.0
+offset_bottom = 111.0
+theme = ExtResource("6_6oucx")
+text = "Score :"
