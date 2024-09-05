@@ -2,18 +2,25 @@ extends Control
 
 const GRID_SIZE = 10
 const BLANK_CELL = preload("res://Assets/blank.png") 
-@onready var popup_scene= load("res://Scenes/Popup.tscn")
-@onready var color_buttons_container = $HBoxContainer
-@onready var popup_container = $PopupContainer
-@onready var popup_instance = popup_scene.instantiate()
-var color_buttons
+@onready var texture_rect_preview: TextureRect = $TextureRect
 var cells = []
 var selected_color = null 
-var popup = null
+var color_scenes = [
+	preload("res://Scenes/Yellow.tscn"),
+	preload("res://Scenes/Green.tscn"),
+	preload("res://Scenes/Brown.tscn"),
+	preload("res://Scenes/Blue.tscn")
+]
+var color_previews = {
+	"yellow": preload("res://Assets/yellow_preview.png"),
+	"green": preload("res://Assets/green_preview.png"),
+	"brown": preload("res://Assets/brown_preview.png"),
+	"blue": preload("res://Assets/blue_preview.png")
+}
 
 func _ready():
 	create_grid()
-	color_buttons = get_color_buttons()
+	assign_random_color()
 
 func _process(delta: float) -> void:
 	rotate_color()
@@ -35,9 +42,16 @@ func _button_pressed(i: int, j: int) -> void:
 	var text_error = "ERROR"
 	if selected_color:
 		place_color(i, j)
+		# Vérifier s'il reste de la place pour la pièce actuelle
+		if not can_place_anywhere(selected_color):
+			print("Aucune place disponible pour la pièce actuelle")
+			# Ajouter une action, comme afficher un popup ou un message ici
+		else:
+			# Générer une nouvelle couleur si la pièce actuelle ne peut plus être placée
+			assign_random_color()
 	else:
 		SignalBus.popup_displayed.emit(text_error)
-		popup_container.add_child(popup_instance)
+		#popup_container.add_child(popup_instance)
 
 func place_color(i: int, j: int):
 	var text_error = "Can't place here."
@@ -47,10 +61,10 @@ func place_color(i: int, j: int):
 			var x = i + n if selected_color.is_vertical else i
 			var y = j if selected_color.is_vertical else j + n
 			cells[x][y].icon = load("res://Assets/"+ selected_color.color_name +".png")
-		selected_color = null 
+		assign_random_color()
 	else:
 		SignalBus.popup_displayed.emit(text_error)
-		popup_container.add_child(popup_instance)
+		#popup_container.add_child(popup_instance)
 
 func can_place_color(i: int, j: int, size: int, is_vertical: bool) -> bool:
 	for n in range(size):
@@ -62,31 +76,33 @@ func can_place_color(i: int, j: int, size: int, is_vertical: bool) -> bool:
 			return false
 	return true
 
-func _on_button_pressed() -> void:
-	if color_buttons[0].is_pressed():
-		selected_color = preload("res://Scenes/Yellow.tscn").instantiate()
-	elif color_buttons[1].is_pressed():
-		selected_color = preload("res://Scenes/Green.tscn").instantiate()
-	elif color_buttons[2].is_pressed():
-		selected_color = preload("res://Scenes/Brown.tscn").instantiate()
-	elif color_buttons[3].is_pressed():
-		selected_color = preload("res://Scenes/Blue.tscn").instantiate()
-	elif color_buttons[4].is_pressed():
-		print("popups")
-
-func get_color_buttons():
-	var buttons = []
-	for b in color_buttons_container.get_child_count():
-		var child = color_buttons_container.get_child(b)
-		if child is Button:
-			buttons.append(child)
-	return buttons
-
 func rotate_color():
 	var text_error = "No color selected, you can't rotate."
 	if Input.is_action_just_released("rotate"):
 		if selected_color != null:
-			selected_color.is_vertical = false
-		else:
-			SignalBus.popup_displayed.emit(text_error)
-			popup_container.add_child(popup_instance)
+			if selected_color.is_vertical == true:
+				selected_color.is_vertical = false
+				texture_rect_preview.rotation = -1.57079994678497
+			else:
+				selected_color.is_vertical = true
+				texture_rect_preview.rotation = 0
+	else:
+		SignalBus.popup_displayed.emit(text_error)
+		#popup_container.add_child(popup_instance)
+
+func assign_random_color():
+	texture_rect_preview.rotation = 0
+	var random_index = randi() % color_scenes.size()
+	selected_color = color_scenes[random_index].instantiate()
+	var color_name = selected_color.color_name
+	if color_previews.has(color_name):
+		texture_rect_preview.texture = color_previews[color_name]
+
+func can_place_anywhere(piece) -> bool:
+	for i in range(GRID_SIZE):
+		for j in range(GRID_SIZE):
+			if can_place_color(i, j, piece.size, true):
+				return true
+			if can_place_color(i, j, piece.size, false):
+				return true
+	return false
