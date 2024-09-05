@@ -5,4 +5,5 @@
 [node name="Brown" type="Node2D"]
 script = ExtResource("1_bwcy1")
 size = 4
+score = 4
 color_name = "brown"

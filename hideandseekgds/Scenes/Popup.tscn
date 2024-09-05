@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cwv334nfbd30i"]
 
 [ext_resource type="Script" path="res://Scripts/popup.gd" id="1_6xq3t"]
-[ext_resource type="Theme" uid="uid://byxv1brsahxxk" path="res://Themes/Warning_Label*.theme" id="1_xsk8w"]
+[ext_resource type="Theme" uid="uid://byxv1brsahxxk" path="res://Themes/Warning_Label.theme" id="1_xsk8w"]
 [ext_resource type="Theme" uid="uid://dluoarypqcixu" path="res://Themes/Warning_Button.theme" id="2_3sbnt"]
 
 [node name="Control" type="Control"]

@@ -5,4 +5,5 @@
 [node name="Green" type="Node2D"]
 script = ExtResource("1_tgko8")
 size = 3
+score = 3
 color_name = "green"

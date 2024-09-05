@@ -5,4 +5,5 @@
 [node name="Yellow" type="Node2D"]
 script = ExtResource("1_cbkft")
 size = 5
+score = 5
 color_name = "yellow"
