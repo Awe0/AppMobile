@@ -1,8 +1,8 @@
 extends Control
 
 @onready var grid_container: GridContainer = $GridContainer
-@onready var score_label: Label = $Label
-@onready var texture_rect_preview: TextureRect = $TextureRect
+@onready var score_label: Label = $Score
+@onready var texture_rect_preview: TextureRect = $Preview
 @onready var restart_button: Button = $Restart
 @onready var change_piece_button: Button = $ChangePiece
 
@@ -27,7 +27,6 @@ var color_previews = {
 }
 
 func _ready():
-	print(grid_container)
 	create_grid()
 	assign_random_color()
 
@@ -89,6 +88,7 @@ func assign_random_color():
 	var color_name = selected_color.color_name
 	if color_previews.has(color_name):
 		texture_rect_preview.texture = color_previews[color_name]
+		texture_rect_preview.scale = Vector2(0.8,0.8)
 
 func check_grid(piece) -> bool:
 	var has_blank_cell = false
@@ -129,11 +129,11 @@ func _on_rotate_pressed() -> void:
 func _on_restart_pressed() -> void:
 	reset_grid()
 	var enable_theme_button = load("res://Themes/Buttons.tres")
+	score = 0
 	score_label.text = "Score: 0"
-	change_piece_button.text = "Change\nPiece\n1x"
-	attempt = 0
+	change_piece_button.text = "Change\nPiece\n2x"
+	attempt = 2
 	change_piece_button.set_theme(enable_theme_button)
-
 
 func _on_change_piece_pressed() -> void:
 	var disable_theme_button = load("res://Themes/Disable_Button.theme")
